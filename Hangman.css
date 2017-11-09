@@ -1,0 +1,29 @@
+.body {
+	text-align:center;
+}
+#form {
+	margin: 10px;
+	text-align: center;
+}
+
+.button {
+	width:5%;
+	
+}
+
+#buttons {
+	padding-top: 10px;
+}
+
+.info {
+	text-align:center;
+	
+}
+
+h1,h2,h3,h4,h5,h6 {
+	text-align:center;
+}
+
+#img_hangman {
+	left: 150px;
+}

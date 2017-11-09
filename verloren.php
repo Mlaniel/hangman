@@ -10,8 +10,9 @@
 	if(isset($_SESSION['wort']))
 	{
 		echo "Das Wort war: ".$_SESSION['wort']."<br>";
+		$_SESSION['wort']=null;
 	}
 	?>
-	<a href="hangman.php">Neues Spiel</a>
+	<a href="index.php">Neues Spiel</a>
 </body>
 </html>

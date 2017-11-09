@@ -8,13 +8,15 @@
 
 <body>
 	<h1>Hangman</h1>
-		<p>Klicken Sie auf "Neues Wort" um ein Wort zu generieren.<br>
+		<p class="info">Klicken Sie auf "Neues Wort" um ein Wort zu generieren.<br>
 		Geben sie dann einen Buchstaben in das Textfeld ein und klicken auf "Raten!"</p>
 
-<form method="post" action="Hangman.php">
+<div id="form">
+		<form method="post" action="index.php">
 
 <?php
 	session_start();
+	$img=null;
 
 /*Buchstabe Raten*/
 		if(isset($_POST['raten']))
@@ -94,7 +96,7 @@
 				echo "<br>".$falsch."/6";
 				if($falsch > 0 && $falsch <= 7)
 				{
-					echo "<br><img src='pic/hangman_".$falsch.".gif', id='hangman'>";
+					$img = "<br><img src='pic/hangman_".$falsch.".gif' alt='hangman'".$falsch." id='img_hangman'>";
 					
 				}
 				if($falsch >= 6) {
@@ -118,7 +120,7 @@
 				$zz = 0;
 				while($wort = fgets ($h)){
 					$zz++;
-					//echo "$wort<br>";
+//					echo "$wort<br>";
 					$arr[]=trim($wort);
 				}
 				fclose($h);
@@ -144,15 +146,20 @@
 			$_SESSION['notreset']= null;
 			$_SESSION['geraten']=0;
 		}
-
-
+		
 /*ENDE der html seite*/
-			echo "<br>Buchstabe: <input type='text' name='buchstabe'>";
-			echo "<br><input type='submit' name='raten' value='Raten!'>";
-			echo "<input type='submit' name='neu' value='Neues Wort'>";
-
 ?>
+			<br>Buchstabe: <input type='text' name='buchstabe'/>
+			<div id="buttons">
+				<input type='submit' name='raten' value='Raten!' class="button" />
+				<input type='submit' name='neu' value='Neues Wort' class="button" />
+			</div>
 
-</form>
+			<?php 
+				if(!is_null($img))
+					echo $img;
+			?>
+	</form>
+</div>
 </body>
 </html>
